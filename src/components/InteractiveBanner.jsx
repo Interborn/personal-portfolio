@@ -1,5 +1,4 @@
 import React from 'react';
-import { BsGithub } from 'react-icons/Bs';
 
 const InteractiveBanner = (props) => {
     
