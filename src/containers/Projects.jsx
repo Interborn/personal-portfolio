@@ -29,10 +29,10 @@ const Projects = () => {
           <InteractiveCard key={index} icon={project.icon} title={project.title} subtitle={project.subtitle} body={project.body} className={project.class} onClick={() => handleClick(project)} />
         ))}
         {projectsBanner.map((banner, index) => (
-          banner.id === activeBannerId && <InteractiveBanner key={index} background={banner.background} title={banner.title} site={banner.site} siteName={banner.siteName} />
+          banner.id === activeBannerId && <InteractiveBanner key={index} background={banner.background} title={banner.title} site={banner.site} siteName={banner.siteName} primaryColor={banner.primaryColor} secondaryColor={banner.secondaryColor} />
         ))}
         {[projects.slice(-1)[0]].map((project, index) => (
-          <InteractiveCard key={index} icon={project.icon} title={project.title} subtitle={project.subtitle} body={project.body} className={project.class} />
+          <InteractiveCard key={index} icon={project.icon} title={project.title} subtitle={project.subtitle} body={project.body} className={project.class} onClick={() => handleClick(projects.slice(-1)[0])} />
         ))}
       </div>
     </div>

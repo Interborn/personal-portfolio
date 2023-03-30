@@ -2,21 +2,18 @@ import React, { useState } from 'react'
 import '../index.css';
 
 const InteractiveCard = (props) => {
-    const [isActive, setIsActive] = useState(false);
-    const [imageMaxWidth, setImageMaxWidth] = useState('5rem');
-  
-    const handleButtonClick = () => {
-      setIsActive(!isActive);
-      setImageMaxWidth(imageMaxWidth === '5rem' ? '0rem' : '5rem');
-      if (props.onClick) {
-        props.onClick();
-      }
-    };
+  const [isActive, setIsActive] = useState(false);
 
-  const buttonClassNames = `flex flex-col border rounded-3xl m-4 justify-between h-[19.5rem] p-[2rem] ease-in duration-500 cursor-pointer group ${isActive ? 'border-indigo-500' : 'border-slate-300 hover:border-indigo-500'} ${isActive ? 'shadow-xl shadow-violet-200 bg-violet-50' : 'hover:shadow-xl hover:shadow-violet-200 hover:bg-violet-50'}`;
-  
+  const handleButtonClick = () => {
+    setIsActive(!isActive);
+    if (props.onClick) {
+      props.onClick();
+    }
+  };
 
-  const iconClassNames = `iconImage max-w-[${imageMaxWidth}] duration-500 ease-out group-hover:color-violet-300 group-hover:max-w-[0rem]' : 'group-hover:max-w-[5rem] ${isActive ? 'max-w-[0rem]' : 'group-hover:max-w-[0rem]'}`;
+  const buttonClassNames = `flex flex-col border border-slate-300 rounded-3xl m-4 justify-between h-[19.5rem] p-[2rem] ease-in duration-500 cursor-pointer group  ${isActive ? 'active:border-indigo-500 shadow-xl shadow-violet-200 bg-violet-50' : 'hover:border-indigo-500 hover:shadow-xl hover:shadow-violet-200 hover:bg-violet-50'}`;
+
+  const iconClassNames = `iconImage max-w-[5rem] duration-500 ease-out group-hover:color-violet-300 group-hover:max-w-[0rem]' : ' ${isActive ? 'w-[0rem]' : 'group-hover:max-w-[0rem]'}`;
 
   const hoverBounceClassNames = `hoverBounce ${isActive ? 'text-violet-400' : 'text-slate-400 group-hover:text-violet-400'}`;
   
@@ -24,7 +21,7 @@ const InteractiveCard = (props) => {
   return (
     <div className='lg:w-[33%] card'>
         <button className={buttonClassNames} onClick={handleButtonClick}>
-            <div className=''>    
+            <div>    
                   <img src={props.icon} alt='' className={iconClassNames} />
             </div>
             <div className={hoverBounceClassNames}>
