@@ -15,11 +15,11 @@ const Projects = () => {
     <div className="flex flex-col w-full items-center justify-center py-3 pb-16 mx-auto">
 
       {/* Header */}
-      <div className='flex flex-col justify-around max-w-6xl mx-6'>
+      <div className='flex flex-col justify-around max-w-6xl mx-4'>
         <p className='uppercase'>Projects</p>
-        <div className='flex md:flex-row flex-col my-4'>
-          <h1 className='font-medium text-[36px] w-full'>My passion for learning resulted in these projects:</h1>
-          <p className='text-[20px] w-[100ch]'>We utilize trending technologies and the power of artificial intelligence to create digital experiences that are secure, responsive, and immersive.</p>
+        <div className='flex lg:flex-row flex-col my-4'>
+          <h1 className='font-medium text-[36px] w-full '>My passion for learning resulted in these projects:</h1>
+          <p className='text-[20px] max-w-[100ch]'>We utilize trending technologies and the power of artificial intelligence to create digital experiences that are secure, responsive, and immersive.</p>
         </div>
       </div>
 

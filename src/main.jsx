@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import 'atropos/css'
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ParallaxProvider>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
+  </ParallaxProvider>
 )
