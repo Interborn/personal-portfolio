@@ -9,6 +9,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <ParallaxProvider>
     <React.StrictMode>
       <App />
-    </React.StrictMode>,
+    </React.StrictMode>
   </ParallaxProvider>
 )

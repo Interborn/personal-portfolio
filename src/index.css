@@ -23,3 +23,11 @@
 body {
   overflow-x: hidden;
 }
+
+.w-\[400vw\].\32 xl\:h-\[260vh\].h-\[290vh\].-z-10.bg-repeat.bg-fixed::before {
+  content: "";
+  width: 400vw;
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 100%);
+}

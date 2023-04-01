@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Parallax } from 'react-scroll-parallax';
+import Projects2 from './Projects2';
 
 const images = [
   "https://user-images.githubusercontent.com/54521023/116969935-c13d5b00-acd4-11eb-82b1-5ad2ff10fb76.png",
@@ -6,34 +8,89 @@ const images = [
   "https://user-images.githubusercontent.com/54521023/116969939-c1d5f180-acd4-11eb-8ad4-9ab9143bdb50.png",
 ]
 
+const links = [
+  {
+    title: 'LinkedIn',
+  },
+  {
+    title: 'GitHub',
+  },
+  {
+    title: 'Cadogy',
+  },
+  {
+    title: 'Email',
+  },
+  {
+    title: 'Resume',
+  },
+]
+
 const Hero = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  const handleScroll = () => {
+    setScrollY(window.scrollY);
+  };
+
+  // Attach event listener to window on mount
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    // Remove event listener on unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
-    <div>
-      <section className='heroSection flex w-full'>
-        <div className="bg-black text-white py-20 w-full flex justify-center">
-          <div className="flex flex-col justify-center items-start align-middle p-8">
-            <h1 className="text-[30px] p-2 text-yellow-300 leading-none">Dylan Safra</h1>
-            <h2 className="text-[48px] leading-relaxed md:leading-snug mb-2">Software Engineer
-            </h2>
-            <p className="text-sm text-gray-50 mb-4 max-w-[60ch] xl:w-[60ch]">Explore your favourite events and register now to showcase your talent and win exciting prizes.</p>
-            <a href="#"
-              className="bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent">
-              Explore Now</a>
-          </div>
-          <div className="p-8 mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 w-full  justify-center">
-            <div className="h-48 flex flex-wrap content-center">
-              <div>
-                <img className="inline-block mt-28 hidden xl:block" src="https://user-images.githubusercontent.com/54521023/116969935-c13d5b00-acd4-11eb-82b1-5ad2ff10fb76.png" />
-              </div>
-              <div>
-                <img className="inline-block mt-24 md:mt-0 p-8 md:p-0" src="https://user-images.githubusercontent.com/54521023/116969931-bedb0100-acd4-11eb-99a9-ff5e0ee9f31f.png" />
-              </div>
-              <div>
-                <img className="inline-block mt-28 hidden lg:block" src="https://user-images.githubusercontent.com/54521023/116969939-c1d5f180-acd4-11eb-8ad4-9ab9143bdb50.png" />
+    <div className='overflow-hidden'>
+      <section className='h-full'>
+        <div className="h-[100vh] flex">
+          <div className='flex justify-center items-start md:flex-row flex-col'>
+            <div className="w-full h-full flex flex-col justify-center items-center">
+              <div className='2xl:mx-20 mx-10'>
+                <h3 className='text-[44px]'>Dylan Safra</h3>
+                <h1 className='text-[34px] font-black'>Software Engineer</h1>
+                <p className='text-[18px]'>My convention of continual learning and my habit for going above and beyond continue to lead me down this technological rabbit hole!</p>
+                <div className='flex flex-wrap gap-x-8 gap-y-4 py-4 justify-start'>
+                  {links.map((link, index) => (
+                    <button className='bg-violet-500 text-white hover:bg-violet-400 px-4 py-1 rounded-md' key={index}>{link.title}</button>
+                  ))}
+                </div>
               </div>
             </div>
+            <div className='w-full h-full'>
+            {window.innerWidth >= 770 ? (
+              <div className="w-full h-full flex gap-8 items-center justify-center xl:pr-40 md:pr-10">
+                <Parallax y={[-50, 50]} rotate={['-90deg', '45deg']}>
+                  <div className="2xl:w-[10rem] w-[6rem] xl:w-[8rem] 2xl:h-[20rem] h-[12rem] xl:h-[16rem] bg-black rounded-full -rotate-[25deg]" style={{ transform: `translateY(${scrollY * -1.5}px)` }} />
+                </Parallax>
+                <Parallax y={[-50, 50]} rotate={['-90deg', '45deg']}>
+                  <div className="2xl:w-[15rem] w-[8rem] xl:w-[11.5rem] 2xl:h-[30rem] h-[18rem] xl:h-[24rem] bg-black rounded-full -rotate-[25deg]" style={{ transform: `translateY(${scrollY * 2.75}px)` }}/>
+                </Parallax>
+                <Parallax y={[-50, 50]} rotate={['-90deg', '45deg']}>
+                  <div className="2xl:w-[10rem] w-[6rem] xl:w-[8rem] 2xl:h-[20rem] h-[12rem] xl:h-[16rem] bg-black rounded-full -rotate-[25deg]" style={{ transform: `translateY(${scrollY * -1}px)` }}/>
+                </Parallax>
+              </div>
+              ) : (
+                <div className="w-full h-full flex gap-8 items-center justify-center">
+                <Parallax rotate={['-45deg', '45deg']}>
+                  <div className="w-[6rem] h-[12rem] bg-black rounded-full -rotate-[25deg]" style={{ transform: `translateZ(${scrollY * -1.5}px)` }} />
+                </Parallax>
+                <Parallax rotate={['-45deg', '45deg']}>
+                  <div className="w-[8rem] h-[18rem] xl:h-[24rem] bg-black rounded-full -rotate-[25deg]" style={{ transform: `translateZ(${scrollY * 2.75}px)` }}/>
+                </Parallax>
+                <Parallax rotate={['-45deg', '45deg']}>
+                  <div className="w-[6rem] h-[12rem] xl:h-[16rem] bg-black rounded-full -rotate-[25deg]" style={{ transform: `translateZ(${scrollY * -1}px)` }}/>
+                </Parallax>
+              </div>
+            )}
+            </div>
           </div>
+        </div>
+        <div className='w-full h-full'>
+          <Projects2 />
         </div>
       </section>
     </div>
