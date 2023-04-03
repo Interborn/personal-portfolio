@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Parallax } from 'react-scroll-parallax';
-import Projects2 from './Projects2';
+import Projects from './Projects';
 
 const images = [
   "https://user-images.githubusercontent.com/54521023/116969935-c13d5b00-acd4-11eb-82b1-5ad2ff10fb76.png",
@@ -48,7 +48,7 @@ const Hero = () => {
       <section className='h-full'>
         <div className="h-[100vh] flex">
           <div className='flex justify-center items-start md:flex-row flex-col'>
-            <div className="w-full h-full flex flex-col justify-center items-center">
+            <div className="w-full h-full flex flex-col justify-center items-center sm:mt-0 mt-20">
               <div className='2xl:mx-20 mx-10'>
                 <h3 className='text-[44px]'>Dylan Safra</h3>
                 <h1 className='text-[34px] font-black'>Software Engineer</h1>
@@ -90,7 +90,7 @@ const Hero = () => {
           </div>
         </div>
         <div className='w-full h-full'>
-          <Projects2 />
+          <Projects />
         </div>
       </section>
     </div>

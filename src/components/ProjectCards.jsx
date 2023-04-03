@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import CardFlip from 'react-card-flip';
 
 export const featuredDetails = [
   {
@@ -24,45 +25,92 @@ export const secondaryDetails = [
 ]
 
 export const PrimaryProjectCard = (props) => {
-    return (
-        <div className="flex items-center flex-col select-none hover:cursor-pointer bg-white border-[1px] rounded-3xl hover:shadow-xl ease-in-out duration-300 w-full h-full">
-            {/* IMAGE CONTAINER */}
-            <div className="flex m-4 xl:m-0 xl:my-4 max-h-[177px] max-w-[518px]">
-                <img className="mx-auto object-cover rounded-2xl" src={props.icon} alt="" />
-            </div>
-            {/* DETAILS CONTAINER */}
-            <div className="max-w-[90%] pb-3 md:pb-0 mx-auto text-[#808191]">
-                <div>
-                    <p className="font-mono py-3 font-bold text-[12px] text-[#92a0b3]">
-                        {props.category}
-                    </p>
-                    <h1 className="max-w-[100%] mx-auto font-[500] text-[#3d3d3d] text-[24px]">
-                        {props.title}
-                    </h1>
-                    <p className="text-[17px] mb-3">
-                        {props.description}
-                    </p>
-                </div>
-            </div>
-        </div>
-    )
-}
-export const SecondaryProjectCard = (props) => {
-    return (
-        <div className="flex flex-col sm:flex-row items-center select-none hover:cursor-pointer bg-white border-[1px] rounded-3xl hover:shadow-xl ease-in-out duration-300 md:h-full first:md:mb-4 first:mb-2">
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const onCardClick = () => {
+    setIsFlipped(!isFlipped);
+  };
+
+  return (
+    <CardFlip isFlipped={isFlipped} flipDirection="horizontal">
+      <div className="flex items-center flex-col select-none hover:cursor-pointer bg-white border-[1px] rounded-3xl hover:shadow-xl ease-in-out duration-300 w-full lg:h-[385px]" onClick={onCardClick}>
         {/* IMAGE CONTAINER */}
-            <div className="flex m-4 my-4 max-h-[177px] md:h-full max-w-[518px]">
-                <img className="sm:w-[160px] sm:h-[150px] object-cover rounded-2xl" src={props.icon} alt="" />
-            </div>
-            {/* TITLE CONTAINER */}
-            <div className='mx-4 md:mx-2 mb-4 md:mb-4 md:my-2 self-start'>
-                <p className="font-mono py-2 font-bold text-[12px] text-[#92a0b3]">
-                    {props.category}
-                </p>
-                <h1 className="md:max-w-[24ch] font-[500] text-[#3d3d3d] sm:text-[24px] text-[18px]">
-                    {props.title}
-                </h1>
-            </div>
+        <div className="flex m-4 xl:m-0 xl:my-4 max-h-[177px] max-w-[518px]">
+          <img className="mx-auto object-cover rounded-2xl" src={props.icon} alt="" />
         </div>
-    )
-}
+        {/* DETAILS CONTAINER */}
+        <div className="max-w-[90%] pb-3 md:pb-0 mx-auto text-[#808191]">
+          <div>
+            <p className="font-mono py-3 font-bold text-[12px] text-[#92a0b3]">
+              {props.category}
+            </p>
+            <h1 className="max-w-[100%] mx-auto font-[500] text-[#3d3d3d] text-[24px]">
+              {props.title}
+            </h1>
+            <p className="text-[17px] mb-3 primFront-description">
+              {props.description}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center flex-col select-none bg-white border-[1px] rounded-3xl hover:shadow-xl ease-in-out duration-300 w-full min-h-[385px]" onClick={onCardClick}>
+        <div className="max-w-[90%] pb-3 md:pb-0 mx-auto my-7 text-[#808191]">
+          <div>
+            <h1 className="max-w-[100%] mx-auto font-[500] text-[#3d3d3d] text-[24px]">
+              {props.title}
+            </h1>
+            <p className="text-[17px] mb-3">
+              {props.description}
+            </p>
+          </div>
+          <div className='flex gap-4 pt-3'>
+            <button className='bg-violet-300 px-4 py-1 rounded-lg font-bold text-gray-800'>Source Code</button>
+            <button className='bg-violet-300 px-4 py-1 rounded-lg font-bold text-gray-800'>Project</button>
+          </div>
+        </div>
+      </div>
+    </CardFlip>
+  );
+};
+
+
+export const SecondaryProjectCard = (props) => {
+    const [isFlipped, setIsFlipped] = useState(false);
+  
+    const handleCardClick = () => {
+      setIsFlipped(!isFlipped);
+    };
+  
+    return (
+      <CardFlip isFlipped={isFlipped} flipDirection="horizontal">
+        {/* FRONT CARD */}
+        <div className="flex flex-col sm:flex-row items-center select-none hover:cursor-pointer bg-white border-[1px] rounded-3xl hover:shadow-xl ease-in-out duration-300 lg:h-[182px]" onClick={handleCardClick}>
+          {/* IMAGE CONTAINER */}
+          <div className="flex m-4 my-4 max-h-[177px]  max-w-[518px]">
+            <img className="sm:w-[160px] sm:h-[150px] object-cover rounded-2xl" src={props.icon} alt="" />
+          </div>
+          {/* TITLE CONTAINER */}
+          <div className="mx-4 md:mx-2 md:my-2 self-start">
+            <p className="font-mono py-2 font-bold text-[12px] text-[#92a0b3]">{props.category}</p>
+            <h1 className="md:max-w-[24ch] font-[500] text-[#3d3d3d] sm:text-[24px] text-[18px]">{props.title}</h1>
+          </div>
+        </div>
+        {/* BACK CARD */}
+        <div className="flex flex-col sm:flex-row items-center select-none bg-white border-[1px] rounded-3xl hover:shadow-xl ease-in-out duration-300" onClick={handleCardClick}>
+          {/* TITLE CONTAINER */}
+          <div className="self-start lg:h-[160px] max-h-[177px]  max-w-[518px] my-3 mx-6">
+            <div className='flex gap-4'>
+              <h1 className="max-w-[100%] mx-auto font-[500] text-[#3d3d3d] text-[24px] w-full">
+                {props.title}
+              </h1>
+              <button className='bg-violet-300 px-3.5 py-1 rounded-lg text-[12px] text-gray-800'>S</button>
+              <button className='bg-violet-300 px-3.5 py-1 rounded-lg text-[12px] text-gray-800'>P</button>
+            </div>
+            <p className="text-[17px] mb-3 text-[#808191]">
+              {props.description}
+            </p>
+          </div>
+        </div>
+      </CardFlip>
+    );
+  };

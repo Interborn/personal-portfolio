@@ -22,14 +22,14 @@ const Experience = () => {
       <div className='expContent w-full h-full flex flex-col justify-center items-center absolute lg:mt-0 mt-0 md:mt-40'>
         <div className='flex flex-col justify-around max-w-7xl mx-4 bg-white p-8 mt-16 mb-10 rounded-lg border-violet-400 border-2'>
           <p className='uppercase'>Experiences</p>
-          <div className='flex lg:flex-row-reverse flex-col'>
+          <div className='flex flex-col'>
             <h1 className='font-medium text-[36px] w-full '>“Life happens wherever you are, whether you make it or not.”</h1>
-            <p className='text-[20px] max-w-[100ch]'>We utilize trending technologies and the power of artificial intelligence to create digital experiences that are secure, responsive, and immersive.</p>
+            <p className='text-[20px] max-w-[100ch]'>This is how I have made life happen:</p>
           </div>
         </div>
         <div></div>
         {experiences.map((exp, index) => (
-          <div className="job rounded-lg [&:nth-child(2)]: 2xl:w-[55%] lg:w-[70%] w-[100%] sm:px-10 px-8 mb-8  self-start lg:odd:self-start lg:even:self-end even:self-start flex lg:odd:flex-row odd:flex-row-reverse even:flex-row">
+          <div key={index} className="job rounded-lg [&:nth-child(2)]: 2xl:w-[55%] lg:w-[70%] w-[100%] sm:px-10 px-8 mb-8  self-start lg:odd:self-start lg:even:self-end even:self-start flex lg:odd:flex-row odd:flex-row-reverse even:flex-row">
             {index % 2 == 0 ? '' : 
               <div className='w-[80px] h-80 bg-white rounded-full self-center mx-6 sm:flex hidden items-center justify-center border-violet-400 border-2'>
                 <p className='-rotate-90 sm:text-[66px] font-bold'>{exp.year}</p>

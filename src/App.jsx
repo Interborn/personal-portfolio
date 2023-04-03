@@ -1,4 +1,4 @@
-import { Navbar, Hero, TechStack, Experience, Education, Footer } from './containers';
+import { Navbar, Hero, TechStack, Experience, Footer } from './containers';
 import './index.css';
 
 function App() {
@@ -9,7 +9,6 @@ function App() {
       <Hero />
       <TechStack />
       <Experience />
-      <Education />
       <Footer />
     </div>
   )

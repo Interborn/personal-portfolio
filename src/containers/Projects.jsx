@@ -1,42 +1,33 @@
-import React, { useState } from 'react';
-import '../index.css';
-import InteractiveCard from '../components/InteractiveCard';
-import InteractiveBanner from '../components/InteractiveBanner';
-import { projects, projectsBanner } from '../assets/data/projects';
+import React from 'react';
+import { projects } from '../assets/data/projects'
+import { PrimaryProjectCard, SecondaryProjectCard } from '../components/ProjectCards';
 
 const Projects = () => {
-  const [activeBannerId, setActiveBannerId] = useState('Cadogy');
-
-  function handleClick(project) {
-    setActiveBannerId(project.id);
-  }
-
   return (
-    <div className="flex flex-col w-full items-center justify-center py-3 pb-16 mx-auto">
-
-      {/* Header */}
-      <div className='flex flex-col justify-around max-w-6xl mx-4'>
-        <p className='uppercase'>Projects</p>
-        <div className='flex lg:flex-row flex-col my-4'>
-          <h1 className='font-medium text-[36px] w-full '>My passion for learning resulted in these projects:</h1>
-          <p className='text-[20px] max-w-[100ch]'>We utilize trending technologies and the power of artificial intelligence to create digital experiences that are secure, responsive, and immersive.</p>
+    <div className='flex flex-col justify-center items-center'>
+      <div className='flex flex-col justify-around max-w-6xl mx-4 bg-white my-10'>
+        <p className='uppercase'>projects</p>
+        <div className='flex lg:flex-row flex-col'>
+          <h1 className='font-medium text-[36px] w-full'>React Chatbot<br/>Cadogy Web Agency<br/>Web3 Crowd Funding</h1>
+          <p className='text-[20px] max-w-[100ch] w-full'>These projects mean a lot to me as they have helped me in my learning journey. Through the process of building and breaking and crying, I have more knowledge of the technologies involved, how they work together, and how to use them to create anything I can imagine.</p>
         </div>
       </div>
-
-      {/* Projects */}
-      <div className='flex flex-wrap justify-evenly xl:max-w-6xl flex-col lg:flex-row w-full'>
-        {projects.slice(0, -1).map((project, index) => (
-          <InteractiveCard key={index} icon={project.icon} title={project.title} subtitle={project.subtitle} body={project.body} className={project.class} onClick={() => handleClick(project)} />
-        ))}
-        {projectsBanner.map((banner, index) => (
-          banner.id === activeBannerId && <InteractiveBanner key={index} background={banner.background} title={banner.title} site={banner.site} siteName={banner.siteName} primaryColor={banner.primaryColor} secondaryColor={banner.secondaryColor} />
-        ))}
-        {[projects.slice(-1)[0]].map((project, index) => (
-          <InteractiveCard key={index} icon={project.icon} title={project.title} subtitle={project.subtitle} body={project.body} className={project.class} onClick={() => handleClick(projects.slice(-1)[0])} />
-        ))}
+      <div className="flex w-full justify-center mx-auto lg:py-10 lg:pb-20 max-w-6xl">
+        <div className="flex flex-col sm:flex-row justify-center items-center mx-4 md:gap-8 gap-2">
+          <div className="w-full h-full">
+            {projects.slice(0, -2).map((project, index) => (
+              <PrimaryProjectCard key={index} icon={project.icon} category={project.category} title={project.title} description={project.description} />
+            ))}
+          </div>
+          <div className="flex flex-col w-full h-full gap-4">
+            {projects.slice(1, projects.length).map((project, index) => (
+              <SecondaryProjectCard key={index} icon={project.icon} category={project.category} title={project.title} description={project.description} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
-export default Projects
+export default Projects;
